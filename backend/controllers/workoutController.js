@@ -14,13 +14,30 @@ const createWorkout = async (req,res)=>{
     }
 
 }
-//read/get workout
+//read/get ALL workouts
 
+const getWorkouts = async (req, res) => {
+    //-1 means in descending order
+    const workouts = await Workout.find({ }).sort({createdAt: -1})
 
+    res.status(200).json(workouts)
+}
+
+//get a SINGLE workout
+const getWorkout = async (req, res) => {
+    const {id} = req.params
+    const workout = await Workout.findById(id)
+
+    if (!workout) {
+        return res.status(404).json({error: "No such workout"})
+    }
+
+    res.status(200).json(workout)
+}
 
 //update workout
 
 //delete workout
 
 
-module.exports = {createWorkout}
+module.exports = {createWorkout, getWorkouts, getWorkout}
