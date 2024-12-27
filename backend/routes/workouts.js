@@ -10,9 +10,7 @@ router.get('/:id', (req,res)=>{
     res.json({mssg: "get ONE workouts"})
 })
 
-//POST request to create a new workout
-//destructured creation of 3 variables from body, which is parsed by middleware in 
-//server.js
+
 
 router.post('/', async (req, res) => {
     const {title, load, reps} = req.body
