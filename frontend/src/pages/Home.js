@@ -11,7 +11,7 @@ const Home = () => {
     //fetches backend data
     useEffect(() => {
         const fetchWorkouts = async () => {
-            const response = await fetch('http://localhost:3000/api/workouts')
+            const response = await fetch('/api/workouts')
             //parses json, creates array of workout objects
             const json = await response.json()
             
@@ -19,6 +19,7 @@ const Home = () => {
                 setWorkouts(json)
             }
         }
+        fetchWorkouts()
     }, [])
 
     return (
